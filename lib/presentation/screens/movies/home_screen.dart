@@ -29,6 +29,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     super.initState();
     ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
     ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(topRatedMoviesProvider.notifier).loadNextPage();
+    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
   }
 
   @override
@@ -36,6 +38,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingMovies = ref.watch(nowPlayingmoviesProvider);
     final shideShowMovies = ref.watch(moviesSlideshowProvider);
     final popularMovies = ref.watch(popularMoviesProvider);
+    final topRatedMovies = ref.watch(topRatedMoviesProvider);
+    final upcomingMovies = ref.watch(upcomingMoviesProvider);
     // return SingleChildScrollView(
     //   child:
     // );
@@ -63,11 +67,11 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                     ref.read(nowPlayingmoviesProvider.notifier).loadNextPage(),
               ),
               MovieHorizontalListview(
-                movies: nowPlayingMovies,
+                movies: upcomingMovies,
                 title: 'Proximamente',
                 subTitle: 'En este mes',
                 loadNextPage: () =>
-                    ref.read(nowPlayingmoviesProvider.notifier).loadNextPage(),
+                    ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
               ),
               MovieHorizontalListview(
                 movies: popularMovies,
@@ -77,11 +81,11 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                     ref.read(popularMoviesProvider.notifier).loadNextPage(),
               ),
               MovieHorizontalListview(
-                movies: nowPlayingMovies,
+                movies: topRatedMovies,
                 title: 'Mejor calificadas',
                 subTitle: 'Desde siempre',
                 loadNextPage: () =>
-                    ref.read(nowPlayingmoviesProvider.notifier).loadNextPage(),
+                    ref.read(topRatedMoviesProvider.notifier).loadNextPage(),
               ),
             ],
           );
