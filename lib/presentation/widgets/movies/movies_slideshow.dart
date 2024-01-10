@@ -31,7 +31,7 @@ class MoviesSlideshow extends StatelessWidget {
 }
 
 class _Slide extends StatelessWidget {
-  const _Slide({super.key, required this.movie});
+  const _Slide({required this.movie});
   final Movie movie;
 
   @override
