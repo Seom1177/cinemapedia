@@ -10,7 +10,7 @@ class MovieScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MovieId ${movieId}'),
+        title: Text('MovieId $movieId'),
       ),
     );
   }
