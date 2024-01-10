@@ -43,6 +43,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     // return SingleChildScrollView(
     //   child:
     // );
+    return FullScreenLoader(); 
     return CustomScrollView(
       slivers: [
         const SliverAppBar(
