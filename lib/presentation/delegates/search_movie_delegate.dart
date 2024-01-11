@@ -1,18 +1,32 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
 
-class SearchMovieDelegate extends SearchDelegate {
+class SearchMovieDelegate extends SearchDelegate<Movie?> {
   //Cambiar mensaje en el texto de busqueda
   @override
   String get searchFieldLabel => 'Buscar película';
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    return [const Text('BuildActions')];
+    return [
+      // if (query.isNotEmpty)
+      //   FadeIn(
+      //       child: IconButton(
+      //           onPressed: () => query = '', icon: const Icon(Icons.clear))),
+      FadeIn(
+          animate: query.isNotEmpty,
+          duration: const Duration(milliseconds: 250),
+          child: IconButton(
+              onPressed: () => query = '', icon: const Icon(Icons.clear))),
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
-    return const Text('buildLeading');
+    return IconButton(
+        onPressed: () => close(context, null),
+        icon: const Icon(Icons.arrow_back_outlined));
   }
 
   @override
