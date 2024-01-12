@@ -16,6 +16,7 @@ class StorageMoviesNotifier extends StateNotifier<Map<int, Movie>> {
 
   Future<List<Movie>> loadNextPage() async {
     final movies = await localStorageRepository.loadMovies(
+      limit: 15,
         offset: page * 10); //TODO: max 20
     page++;
 
